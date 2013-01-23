@@ -5,7 +5,13 @@
       <h1>
         <%= gravatar_for @user %>
         <%= @user.name %>
-        </h1>
+      </h1>
+      <% if !current_user.friend_with?(@user) %>
+        <p> <%= link_to "Add as friend", friendship_path(@user.id), 
+                                        method: :post,
+                                        data: {confirm: "You sure?" } %>
+        </p>
+      <% end %>
     </section>
   </aside>
   <div class="span8">

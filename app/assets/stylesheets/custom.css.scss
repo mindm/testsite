@@ -203,7 +203,7 @@ aside {
 }
  
  
- /* users index */
+ /* users index and requests */
 
 .users {
   list-style: none;
@@ -216,6 +216,28 @@ aside {
       border-bottom: 1px solid $grayLighter;
     }
   }
+}
+
+.invited_by {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 8px 0;
+    border-top: 1px solid $grayLighter;
+    &:last-child {
+      border-bottom: 1px solid $grayLighter;
+    }
+  }
+}
+
+.accept {
+    color: $green;
+
+}
+
+.decline {
+    color: $red;
 }
  
 /*Misc */
