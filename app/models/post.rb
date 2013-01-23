@@ -14,7 +14,7 @@ attr_accessible :content
 
 belongs_to :user
 
-validates :content, presence: true, length: { maximum: 70 }
+validates :content, presence: true, length: { maximum: 700 }
 validates :user_id, presence: true
 
 default_scope order: 'posts.created_at DESC'
