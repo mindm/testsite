@@ -3,7 +3,7 @@ class FriendshipsController < ApplicationController
   
   def index
     @friends = current_user.friends
-    @pag_friends = current_user.friends.paginate(page: params[:page], per_page: 2)
+    @pag_friends = current_user.friends.paginate(page: params[:page], per_page: 25)
     @pending_invited_by = current_user.pending_invited_by
     @pending_invited = current_user.pending_invited
   end
@@ -11,6 +11,7 @@ class FriendshipsController < ApplicationController
   def create
     @Friend = User.find(params[:id])
     @friendship_created = current_user.invite(@Friend)
+    @pending_invited_by = current_user.pending_invited_by
     if @friendship_created
       flash[:notice] = "Friend invitation sent to #{@Friend.name}"
       redirect_to @Friend
@@ -18,21 +19,18 @@ class FriendshipsController < ApplicationController
   end
     
   def update
-    if params[:foo] == 'approve'
-      @Friend = User.find(params[:id])
-      @friendship_approved = current_user.approve(@Friend)
-      flash[:notice] = "Approved request from #{@Friend.name}"
-      redirect_to friendships_url
-    elsif params[:foo] == 'decline'
-      @Friend = User.find(params[:id])
-      current_user.approve(@Friend)
+    @friend_id = params[:id]
+    @Friend = User.find(@friend_id)
+    @friendship_approved = current_user.approve(@Friend)
+    if params[:foo] == 'decline'
+      #Can't do anything about this, this is how you decline
       current_user.remove_friendship(@Friend)
-      flash[:notice] = "Declined request from #{@Friend.name}"
-      redirect_to friendships_url
-    else 
-    redirect_to friendships_url(params[:action])
     end
-    
+    @pending_invited_by = current_user.pending_invited_by #pending array
+    respond_to do |format|
+      format.html {redirect_to friendships_url}
+      format.js
+    end
   end
   
   def destroy

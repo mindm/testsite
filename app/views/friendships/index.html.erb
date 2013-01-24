@@ -8,7 +8,7 @@
         <h2>Pending requests</h2>
       </section>
       <section>
-        <ul class="invited_by">
+        <ul class="invited_by" id="pending_invited">
           <%= render partial: 'pending_invited_by', collection: @pending_invited_by, as: :friend %>
         </ul>
       </section>
@@ -19,15 +19,16 @@
     <h1>
       Friends
     </h1>
-
-    <% if @friends.any? %>
-      <%= will_paginate @pag_friends %>
-      <ul class="users">
-        <%= render partial: 'pag_friends', collection: @pag_friends, as: :friend %>
-      </ul>
-      <%= will_paginate @pag_friends%>
-    <% else %>
-      <p>No friends yet</p>
-    <% end %>
+    <div>
+      <% if @friends.any? %>
+        <%= will_paginate @pag_friends %>
+        <ul class="users">
+          <%= render partial: 'pag_friends', collection: @pag_friends, as: :friend %>
+        </ul>
+        <%= will_paginate @pag_friends%>
+      <% else %>
+        <p>No friends yet</p>
+      <% end %>
+    </div>
   </div>
 </div>

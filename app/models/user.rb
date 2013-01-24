@@ -31,7 +31,11 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   
   def feed
-    Post.where("user_id = ?", id)
+    Post.where("user_id IN (?) or user_id = ?", self.friends.map { |f| f.id }, self.id)
+  end
+  
+  def pending_invited? (usr)
+    self.pending_invited.include? usr
   end
   
   private
