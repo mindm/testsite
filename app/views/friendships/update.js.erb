@@ -1,6 +1,10 @@
 
 $("#pending_<%= @friend_id %>").remove();
-
+<% if @update_param == 'approve' %>
+  $("#friend_list").html(
+                        "<%= escape_javascript(render( partial: 'friends',
+                        locals: {friends: @friends, pag_friends: @pag_friends})) %>");
+<%end %>
 <% if @pending_invited_by.empty? %>
   $("#invited_aside").fadeOut(1000);
 <% end %>

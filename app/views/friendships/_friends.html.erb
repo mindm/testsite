@@ -1,0 +1,9 @@
+      <% if @friends.any? %>
+        <%= will_paginate @pag_friends %>
+        <ul class="users">
+          <%= render partial: 'pag_friends', collection: @pag_friends, as: :friend %>
+        </ul>
+        <%= will_paginate @pag_friends %>
+      <% else %>
+        <p>No friends yet</p>
+      <% end %>

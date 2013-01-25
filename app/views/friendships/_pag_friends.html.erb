@@ -2,6 +2,7 @@
   <%= gravatar_for friend, size: 52 %>
   <%= link_to friend.name, friend %>
   | <%= link_to "defriend", friendship_path(friend.id), method: :delete,
+                                  remote: true,
                                   data: { confirm: "You sure?" } %>
 
 </li>

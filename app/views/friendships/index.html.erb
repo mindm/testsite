@@ -19,16 +19,8 @@
     <h1>
       Friends
     </h1>
-    <div>
-      <% if @friends.any? %>
-        <%= will_paginate @pag_friends %>
-        <ul class="users">
-          <%= render partial: 'pag_friends', collection: @pag_friends, as: :friend %>
-        </ul>
-        <%= will_paginate @pag_friends%>
-      <% else %>
-        <p>No friends yet</p>
-      <% end %>
+    <div id="friend_list">
+      <%= render partial: 'friends', locals: {friends: @friends, pag_friends: @pag_friends} %>
     </div>
   </div>
 </div>

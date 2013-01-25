@@ -1,0 +1,3 @@
+$("#friend_list").html(
+                        "<%= escape_javascript(render( partial: 'friends',
+                        locals: {friends: @friends, pag_friends: @pag_friends})) %>");
