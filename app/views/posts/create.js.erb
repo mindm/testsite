@@ -1,7 +1,9 @@
 $("#homefeed").html("<h3>Feed</h3><%= escape_javascript(render('shared/feed')) %>");
 
 $(".pagination a").attr('href', function(){
-return this.href.replace(/posts\/\d+/, 'home');
+return this.href.replace(/posts/, 'home');
 });                        
 
 $("#postcount").html("<%= pluralize(current_user.posts.count, "post") %>");
+
+$("#post_content").attr('value', '');

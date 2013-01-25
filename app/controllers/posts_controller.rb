@@ -8,8 +8,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(params[:post])
       if @post.save
-        flash[:success] = "Post created!"
-        redirect_to root_url
+        @feed_items = current_user.feed.paginate(page: params[:page])
+        respond_to do |format|
+          format.html {redirect_to root_url}
+          format.js
+        end
       else
         @feed_items = current_user.feed.paginate(page: params[:page])
         render 'static_pages/home'
@@ -18,6 +21,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    @feed_items = current_user.feed.paginate(page: params[:page])
     respond_to do |format|
       format.html {redirect_to root_url}
       format.js
