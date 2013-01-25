@@ -8,3 +8,7 @@ $("#pending_<%= @friend_id %>").remove();
 <% if @pending_invited_by.empty? %>
   $("#invited_aside").fadeOut(1000);
 <% end %>
+
+$(".pagination a").attr('href', function(){
+return this.href.replace(/friendships\/\d+/, 'friendships');
+});

@@ -41,6 +41,7 @@ class FriendshipsController < ApplicationController
   
   def destroy
     @friends = current_user.friends
+    #@page_path = /(.*?)\d*$/.match(params[:page])[1]
     @pag_friends = current_user.friends.paginate(page: params[:page], per_page: 3)
     @Friend = User.find(params[:id])
     @friendship = current_user.send(:find_any_friendship_with, @Friend)

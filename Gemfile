@@ -13,6 +13,7 @@ gem 'amistad'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'therubyracer'
 end
 
 group :development do

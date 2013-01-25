@@ -1,3 +1,10 @@
 $("#friend_list").html(
                         "<%= escape_javascript(render( partial: 'friends',
                         locals: {friends: @friends, pag_friends: @pag_friends})) %>");
+
+$(".pagination a").attr('href', function(){
+return this.href.replace(/friendships\/\d+/, 'friendships');
+});
+
+
+
