@@ -1,10 +1,10 @@
-<% if f.object.errors.any? %>
+<% if object.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      The form contains <%= pluralize(f.object.errors.count, "error") %>.
+      The form contains <%= pluralize(object.errors.count, "error") %>.
     </div>
     <ul>
-    <% f.object.errors.full_messages.each do |msg| %>
+    <% object.errors.full_messages.each do |msg| %>
       <% if msg == "Password digest can't be blank" %>
         <% next %>
       <% else %>
