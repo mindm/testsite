@@ -6,7 +6,7 @@
         <%= gravatar_for @user %>
         <%= @user.name %>
       </h1>
-      <% if !current_user.friend_with?(@user) && !current_user.pending_invited?(@user) %>
+      <% if !current_user.friend_with?(@user) && !current_user.pending_invited?(@user) && @user != @current_user %>
         <p> <%= link_to "Add as friend", friendship_path(@user.id), 
                                         method: :post,
                                         data: {confirm: "You sure?" } %>
