@@ -6,13 +6,17 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = current_user.posts.build(params[:post])
+    #@ip = request.remote_ip
+    @ip = "86.50.39.173"
+    @location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(@ip)
+    @location_info = {city: @location.city, state: @location.state, longitude: @location.lng, latitude: @location.lat}
+    @post = current_user.posts.build(params[:post].merge(@location_info))
       if @post.save
         @feed_items = current_user.feed.paginate(page: params[:page])
         respond_to do |format|
           format.html {redirect_to root_url}
           format.js
-        end
+      end
       else
         @feed_items = current_user.feed.paginate(page: params[:page])
         render 'static_pages/home'

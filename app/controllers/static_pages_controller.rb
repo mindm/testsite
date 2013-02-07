@@ -4,6 +4,8 @@ class StaticPagesController < ApplicationController
       @post = current_user.posts.build
       @feed_items = current_user.feed.paginate(page: params[:page])
     end
+    @ip = request.remote_ip
+    @location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(@ip)
   end
 
   def help

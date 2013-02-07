@@ -7,6 +7,10 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  city       :string(255)
+#  state      :string(255)
+#  latitude   :float
+#  longitude  :float
 #
 
 require 'test_helper'

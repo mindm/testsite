@@ -37,6 +37,7 @@ textarea {
 }
 
 
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -180,21 +181,22 @@ input {
   @extend .error;
  }
  
- 
- /* Posts */
- 
- .posts {
+/* posts */
+
+.posts {
   list-style: none;
   margin: 10px 0 0 0;
 
   li {
-    padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
-    &:last-child {
-      border-bottom: 1px solid #e8e8e8;
-    }
+    padding: 10px 5px 5px 10px;
+    margin: 10px 0 10px 0;
+    background:white;
+    background:rgba(255,255,255,.8);
+    border-radius: 5px;
+
   }
 }
+
 .content {
   display: block;
 }
@@ -212,8 +214,6 @@ aside {
   }
 }
  
- 
- /* users index and requests */
 
 .users {
   list-style: none;
@@ -221,9 +221,9 @@ aside {
   li {
     overflow: auto;
     padding: 10px 0;
-    border-top: 1px solid $grayLighter;
+    border-top: 1px solid black;
     &:last-child {
-      border-bottom: 1px solid $grayLighter;
+      border-bottom: 1px solid black;
     }
   }
 }
@@ -258,6 +258,11 @@ aside {
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+.hero-unit{
+  background:rgb(238,238,238); /*fallback*/
+  background:rgba(0,0,0,.2);
 }
 
 .btn-custom { 
@@ -303,4 +308,8 @@ aside {
          asset-url('sf_gushing_meadow-webfont.woff', font) format('woff'),
          asset-url('sf_gushing_meadow-webfont.ttf', font) format('truetype'),
          asset-url('sf_gushing_meadow-webfont.svg#sf_gushing_meadow', font) format('svg')
+}
+
+body {
+background:asset-url("subtle_grunge.png", image);
 }

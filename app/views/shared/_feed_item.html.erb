@@ -5,7 +5,10 @@
   </span>
   <span class="content"><%= wrap(feed_item.content) %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(feed_item.created_at) %> ago.
+    Posted <%= time_ago_in_words(feed_item.created_at) %> ago 
+    <% if !(feed_item.state.nil? && feed_item.city.nil?) %>
+    <%= "from #{feed_item.city}, #{feed_item.state}." %>
+    <% end %>
   </span>
   <% if current_user?(feed_item.user) %>
     <%= link_to "delete", feed_item, method: :delete,

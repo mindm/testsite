@@ -7,10 +7,14 @@
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  city       :string(255)
+#  state      :string(255)
+#  latitude   :float
+#  longitude  :float
 #
 
 class Post < ActiveRecord::Base
-attr_accessible :content
+attr_accessible :content, :latitude, :longitude, :state, :city
 
 belongs_to :user
 
