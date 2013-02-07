@@ -1,0 +1,14 @@
+<% if @action == "show" %>
+$("#<%= @post.id %> #gmap").html(
+
+  "<img src='http://maps.googleapis.com/maps/api/staticmap?center=<%=  "#{@post.latitude},#{@post.longitude}" %>&zoom=12&size=600x300&maptype=roadmap&markers=color:red|color:red|<%= "#{@post.latitude},#{@post.longitude}" %>&sensor=false'>\
+  <%= raw((link_to raw("<p class='center'><i class='icon-arrow-up center'></i></p>"),
+                                        map_path(@post.id, act: "close"),
+                                        remote: true,
+                                        title: "close map").gsub("\"", "'"))%>"
+
+
+);
+<% elsif @action == "close" %>
+  $("#<%= @post.id %> #gmap").html("");
+<% end %>

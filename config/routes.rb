@@ -2,8 +2,9 @@ Testsite::Application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :posts, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy, :gmap]
   resources :friendships, only: [:create, :update, :destroy, :index]
+  resources :maps, only: :show
 
   match '/home',     to: 'static_pages#home'
   match '/help',     to: 'static_pages#help'
