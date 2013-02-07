@@ -8,7 +8,7 @@ gem 'will_paginate', '3.0.2'
 gem 'bootstrap-will_paginate', '0.0.9'
 gem 'amistad'
 gem 'geokit'
-gem 'geocoder'
+#gem 'geocoder'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
