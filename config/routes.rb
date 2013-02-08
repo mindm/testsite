@@ -5,6 +5,7 @@ Testsite::Application.routes.draw do
   resources :posts, only: [:create, :destroy, :gmap]
   resources :friendships, only: [:create, :update, :destroy, :index]
   resources :maps, only: :show
+  resources :comments
 
   match '/home',     to: 'static_pages#home'
   match '/help',     to: 'static_pages#help'

@@ -1,0 +1,20 @@
+<li id="c<%= comment.id %>">
+<%= link_to (gravatar_for comment.user, size: 32), comment.user %>
+<span class="user">
+  <%= link_to comment.user.name, comment.user %>
+</span>
+<span class="content">
+<%= wrap(comment.content) %>
+</span>
+<span class="timestamp">
+  Posted <%= time_ago_in_words(comment.created_at) %> ago.
+</span>
+
+<% if current_user?(comment.user) %>
+    <%= link_to raw('<i class="icon-trash icon-black"></i>'),
+                                      comment, method: :delete,
+                                      data: { confirm: "Are you sure?" },
+                                      remote: true,
+                                      title: "Delete comment" %>
+<% end %>
+</li>

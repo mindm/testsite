@@ -1,0 +1,9 @@
+
+<%= gravatar_for current_user, size:24 %>
+<%= form_for(post.comments.build, remote: true) do |f| %>
+  <%= f.text_field :content, :placeholder => 'Comment', class: "span7" %>
+  <%= f.hidden_field :post_id, :value => post.id%>
+  <input  type="submit" name="post" value="post" 
+    style="position: absolute; height: 0px; width: 0px; border: none; padding: 0px;"
+    hidefocus="true" tabindex="-1"/>
+<% end %>

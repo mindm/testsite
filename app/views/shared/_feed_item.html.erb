@@ -1,5 +1,5 @@
 <li id="<%= feed_item.id %>">
-  <%= link_to gravatar_for(feed_item.user), feed_item.user %>
+  <%= link_to gravatar_for(feed_item.user), feed_item.user, class: "gravatar" %>
   <span class="user">
     <%= link_to feed_item.user.name, feed_item.user %>
   <span class="content"><%= wrap(feed_item.content) %></span>
@@ -20,5 +20,18 @@
   <% end %>
   <div id="gmap">
   </div>
+
+
+
+<ul class="indent">
+  <% if feed_item.comments.any? %>
+  <%= render partial: 'shared/comment', collection: feed_item.comments %>
+  <% end %>
+  <li>
+    <%= render partial: 'shared/comment_form', locals: {post: feed_item} %>
+  </li>
+
+</ul>
+
 
 </li>

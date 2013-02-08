@@ -214,8 +214,27 @@ aside {
 }
 
 .indent{
-    margin: 0, 0, 0e 20px;
+    margin: 0, 0, 0, 20px;
     list-style: none;
+    
+    li{
+      padding: 10px 5px 0 10px;
+      margin: 10px 0 10px 0;
+      background:white;
+      background:rgba(125,102,102,.15);
+      border-radius: 5px;
+      
+    }
+    
+    .content {
+    display:block;
+    padding-left: 10px;
+    }
+    
+    .input {
+      display:inline;
+      float:left;
+    }
 }
 
 .users {

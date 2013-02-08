@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
     if signed_in?
       @post = current_user.posts.build
       @feed_items = current_user.feed.paginate(page: params[:page])
+      @comment = current_user.comments.build
     end
     @ip = request.remote_ip
     @location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(@ip)

@@ -17,6 +17,7 @@ class Post < ActiveRecord::Base
 attr_accessible :content, :latitude, :longitude, :state, :city
 
 belongs_to :user
+has_many :comments
 
 validates :content, presence: true, length: { maximum: 700 }
 validates :user_id, presence: true
