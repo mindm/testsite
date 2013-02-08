@@ -7,7 +7,6 @@ class PostsController < ApplicationController
   
   def create
     @ip = request.remote_ip
-    @ip = "86.50.39.173"
     @location = GeoKit::Geocoders::GeoPluginGeocoder.geocode(@ip)
     @location_info = {city: @location.city, state: @location.state, longitude: @location.lng, latitude: @location.lat}
     @post = current_user.posts.build(params[:post].merge(@location_info))
